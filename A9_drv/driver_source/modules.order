@@ -1,0 +1,4 @@
+kernel//home/cifeng/securitymonitor/A9_drv/driver_source/a9_led_drv.ko
+kernel//home/cifeng/securitymonitor/A9_drv/driver_source/a9_beep_drv.ko
+kernel//home/cifeng/securitymonitor/A9_drv/driver_source/a9_adc_drv.ko
+kernel//home/cifeng/securitymonitor/A9_drv/driver_source/a9_mpu6050_drv.ko
