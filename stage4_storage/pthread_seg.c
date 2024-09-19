@@ -4,7 +4,7 @@
 
 int fsled_control(int led_fd, unsigned char led_control_cmd);
 
-//数码管线程.
+//数码管线程
 void *pthread_seg(void *arg)
 {
 	printf("pthread_seg\n");

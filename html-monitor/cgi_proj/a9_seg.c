@@ -27,6 +27,7 @@ int cgiMain()
 	char seg[N];
 	char segvalue[N];
 	char sto_no[2];
+	int seg_no;
 	int msgid;
 	struct msg msg_buf;
 	memset(&msg_buf,0,sizeof(msg_buf));
@@ -34,6 +35,8 @@ int cgiMain()
 	cgiFormString("seg",seg,N);
 	cgiFormString("segvalue",segvalue,N);
 	cgiFormString("store",sto_no,2);
+	seg_no = atoi(segvalue);
+	
 
 	if((key = ftok("/tmp", 'g')) < 0)
 	{
@@ -52,9 +55,9 @@ int cgiMain()
 
 	if (seg[0] == '1')
 	{
-		if(0 <= segvalue[0]-48 <= 15)
+		if(0 <= seg_no <= 15)
 		{
-			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (3 << 4) | ((segvalue[0] - 48) << 0);
+			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (3 << 4) | (seg_no << 0);
 		}
 		else
 		{
@@ -75,7 +78,6 @@ int cgiMain()
 	{
 		msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (3 << 4) | (15 << 0);
 	}
-
 
 	msg_buf.type = 1L;
 	msg_buf.msgtype = 3L;

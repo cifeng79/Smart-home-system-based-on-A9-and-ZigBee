@@ -72,13 +72,6 @@ void *pthread_client_request(void *arg)
 				pthread_mutex_lock(&mutex_fan);
 				printf("hello fan\n");
 				cmd_fan = msgbuf.text[0];
-#if 0
-				//get data from zigbee
-				read(fan_fd,&buf,sizeof(buf));
-				printf("sizeof(buf) = %d.\n",sizeof(buf));
-				printf(">>>>>>%s\n",buf);
-				sleep(1);
-#endif
 				pthread_cond_signal(&cond_fan);
 				pthread_mutex_unlock(&mutex_fan);
 				break;
@@ -91,7 +84,6 @@ void *pthread_client_request(void *arg)
 				printf("humMAX: %d\n",*((int *)&msgbuf.text[13]));
 				printf("illMAX: %d\n",*((int *)&msgbuf.text[17]));
 				printf("illMAX: %d\n",*((int *)&msgbuf.text[21]));
-
 				break;
 			/*ÍØÕ¹½Ó¿Ú*/
 			case 6L:

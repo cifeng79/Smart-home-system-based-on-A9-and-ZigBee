@@ -53,17 +53,25 @@ int cgiMain()
 
 	switch(beep_mode[0])
 	{
-		case '0':
-			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (0 << 0);
-			break;
 		case '1':
-			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (1 << 0);
+			if(beep_status[0] == '1')
+			{
+				msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (1 << 0);//蜂鸣器开
+			}
+			else
+			{
+				msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (0 << 0);
+			}
 			break;
 		case '2':
-			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (2 << 0);
-			break;
-		case '3':
-			msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (3 << 0);
+			if(beep_status[0] == '1')
+			{
+				msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (2 << 0);
+			}
+			else
+			{
+				msg_buf.text[0] = ((sto_no[0] - 48)) << 6 | (1 << 4) | (3 << 0);
+			}
 			break;
 		default:
 			{
